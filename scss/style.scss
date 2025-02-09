@@ -1,80 +1,113 @@
-$bg-color: #db2323;  // Colore di sfondo della pagina
-$yellow: #ffeb3b;  // Colore giallo dei post-it
 $navbar-bg: rgb(25, 25, 122);  // Sfondo trasparente per la navbar
 $text-color: black;  // Colore del testo
 
 // Corpo della pagina
-body {
-  font-family: Arial, sans-serif;
-  background-color: $bg-color;
-  
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;  // Imposta l'altezza di body e html al 100% per consentire il corretto scorrimento
+  overflow-x: hidden;  // Nascondi lo scorrimento orizzontale
+}
 
-  .container {
-    position: relative;
-    width: 100%;
-    height: 100%;  // Imposta l'altezza per coprire tutta la pagina
-    padding-top: 80px;   // Per fare spazio alla navbar sticky
-    display: flex;
-    align-items: flex-start; // Allinea i post-it in alto
-    flex-wrap: wrap;  // Consente ai post-it di andare a capo quando necessario
-    padding: 0 20px;  // Spazio ai lati
-    gap: 20px;  // Distanza tra i post-it
-    flex-direction: column;
-  }
+// Container per i post-it
+.container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;  // Assicura che il contenitore abbia almeno l'altezza della finestra
+  padding-top: 80px;   // Per fare spazio alla navbar sticky
+  display: flex;
+  flex-direction: column;  // Disporre i post-it uno sotto l'altro
+  justify-content: flex-start;  // Iniziamo la distribuzione dall'alto
+  align-items: center;  // Centriamo orizzontalmente i post-it
+  padding: 0 20px;  // Spazio ai lati
+  gap: 20px;  // Distanza tra i post-it
+ 
 }
 
 // Stili per i post-it
 .post-it {
-  background-color: $yellow;
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 10px;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  font-size: 16px;
-  font-weight: bold;
-  color: black;
-  text-decoration: none;
-  position: relative;
+  padding: 20px;
+  box-sizing: border-box;
+  position: relative;  // Per poter usare left e right per spostarli
 }
 
-
+// Alterna la posizione dei post-it a destra e a sinistra
 #post1 {
-  margin-left: 100px;  // spostamento a sinistra
-  margin-top: 50px;   // spostamento verso l'alto
+  margin-top: 200px;
+  left: -400px;  // Sposta leggermente a sinistra
 }
 
 #post2 {
-  margin-left: 800px;  // spostamento maggiore a destra
-  margin-top: 20px;   // spostamento verso l'alto
+  margin-top: 100px;
+  left: 300px;  // Sposta leggermente a destra
 }
 
 #post3 {
-  margin-left: 300px;  // spostamento a sinistra
-  margin-top: 50px;    // spostamento verso l'alto
+  margin-top: 100px;
+  left: -300px;  // Sposta a sinistra
 }
 
 #post4 {
-  margin-left: 700px;  // spostamento maggiore a destra
-  margin-top: 10px;   // spostamento verso l'alto
+  margin-top: 300px;
+  left: 200px;  // Sposta a destra
 }
 
+// Media Query per dispositivi più piccoli
+@media (max-width: 768px) {
+  .container {
+    padding: 0 10px;  // Ridurre lo spazio ai lati per schermi piccoli
+  }
 
+  .post-it {
+    width: 220px;  // Post-it più piccoli su schermi piccoli
+    height: 220px;
+  }
 
+  #post1 {
+    left: -10px;  // Aggiusta la posizione per schermi più piccoli
+  }
 
+  #post2 {
+    left: 10px;
+  }
 
+  #post3 {
+    left: -10px;
+  }
 
+  #post4 {
+    left: 10px;
+  }
+}
 
+@media (max-width: 480px) {
+  .container {
+    padding: 0 5px;  // Ancora meno spazio ai lati su schermi molto piccoli
+  }
 
+  .post-it {
+    width: 180px;  // Ancora più piccoli su schermi molto piccoli
+    height: 180px;
+  }
 
+  #post1 {
+    left: 0;  // Rimuovi l'effetto di spostamento su schermi molto piccoli
+  }
 
+  #post2 {
+    left: 0;
+  }
 
+  #post3 {
+    left: 0;
+  }
 
-
-
-
-
-
+  #post4 {
+    left: 0;
+  }
+}
